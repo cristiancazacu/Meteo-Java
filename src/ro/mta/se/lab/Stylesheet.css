@@ -8,3 +8,11 @@
     -fx-background-color: #2E3335;
     -fx-background-radius: 0px 0px 10px 10px;
 }
+
+.select-anchorpane{
+-fx-background-color: radial-gradient(center 50% 50% , radius 200px , #ffebcd, #ebe4e4);
+}
+
+.listview {
+-fx-background-radius: 20px;
+}

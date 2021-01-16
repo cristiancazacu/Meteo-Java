@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="380.0" minWidth="400" prefHeight="380.0" prefWidth="400.0" styleClass="select-anchorpane" stylesheets="@../Stylesheet.css" xmlns="http://javafx.com/javafx/8.0.271" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ro.mta.se.lab.Controllers.selectorController">
+   <children>
+      <AnchorPane fx:id="container" prefHeight="380.0" prefWidth="400.0">
+         <children>
+            <ListView layoutX="14.0" layoutY="50.0" prefHeight="316.0" prefWidth="180.0" styleClass="listview" />
+            <ListView layoutX="206.0" layoutY="50.0" prefHeight="316.0" prefWidth="180.0" styleClass="listview" />
+            <ImageView fx:id="backButton" fitHeight="27.0" fitWidth="28.0" layoutX="359.0" layoutY="14.0" onMouseClicked="#back_button" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/UI/backArrow.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
