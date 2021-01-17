@@ -10,7 +10,7 @@ Pentru utilizare apsati label-ul **"Click Me"** in care se vor incarca numele or
 tarilor aferente acestora. Se alege tara si orasul ***(orasele sunt incarcate dupa selectia tarii)*** si abia apoi se apasa pe **BackArrow**.
 Rezultatul sunt datele returnate de OpenWeatherAPI incarcate in interfata. Procesul se poate repeta.
 
-##Librariile folosite pentru acest proiect sunt:
+## Librariile folosite pentru acest proiect sunt:
 
 ---
 - **JavaFX** pentru Core la editarea si lucrarea cu interfete in cod + formatul **@FXML**
@@ -21,7 +21,7 @@ impreuna cu alte efecte lucrate manual din **JavaFX**
 - **ControlsFX** libraria introdusa in SceneBuilder pentru accesul la diferite elemente de interfata **Custom**
 
 
-##Plugin-uri si Programe folosite pentru acest proiect sunt:
+## Plugin-uri si Programe folosite pentru acest proiect sunt:
 
 ---
 1. **SceneBuilder** program ce vine in completarea ***IDE*** (integrated development environment) ca un editor vizual pentru
@@ -33,7 +33,7 @@ si formate **universale UML** si **proprii** pentru generarea diverse diagrame *
 3. **CSS** format stylesheet adaptat la **FXML** cu scopul de a stiliza diverse elemente de interfata.
 
 
-##Functionare:
+## Functionare:
 
 ---
 Elementele **FXML** sunt injectate in **Controller**. In momentul lansarii aplicatiei,
@@ -42,12 +42,12 @@ si toate orasele din fisierul de intrare.
 In momentul unei selectii din fereastra **selector.fxml** WeatherAPI va lua in format JSON si popula
 interfata cu datele necesare.
 
-##Format Fisier de Intrare
+## Format Fisier de Intrare
 
 ---
-###Obiect City
+### Obiect City
 | ID	 | CityName | latitude | longitude| CountryCode
 | ----------- | ----------- | ----------- | ----------- | ----------- |
 | 819827 | Razvilka | 55.591667 | 37.740833 | RU
 
-#By Crisitan Cazacu
+# By Crisitan Cazacu
