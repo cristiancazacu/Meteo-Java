@@ -2,13 +2,14 @@ package ro.mta.se.lab;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ro.mta.se.lab.Controllers.Controller;
+import ro.mta.se.lab.Controllers.selectorController;
+import ro.mta.se.lab.Utility.EffectsHandler;
 
 
 import java.io.IOException;
@@ -21,6 +22,12 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Views/mainWindow.fxml")); //save instance of Controller
         Parent root;
+
+        WeatherAPI api = new WeatherAPI();
+        api.initWeatherAPI();
+
+        Controller.passAPI(api);
+        selectorController.passAPI(api);
 
 
         try {

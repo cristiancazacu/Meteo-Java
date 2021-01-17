@@ -8,11 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
-import ro.mta.se.lab.EffectsHandler;
+import ro.mta.se.lab.Utility.EffectsHandler;
+import ro.mta.se.lab.WeatherAPI;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,8 +28,16 @@ public class selectorController {
     public AnchorPane container;
     @FXML
     public AnchorPane parentContainer;
+    @FXML
+    public ListView countryList;
+    @FXML
+    public ListView cityList;
+
+    public String Country;
+    public String City;
 
     private Controller ctrl;
+    private static WeatherAPI api;
 
     public void back_button(MouseEvent mouseEvent) {
         Parent root;
@@ -38,6 +48,7 @@ public class selectorController {
             root = loader.load();
 
             ctrl = loader.getController();
+            ctrl.passLocation(this.Country, this.City);
 
 
             Scene scene = backButton.getScene();
@@ -58,9 +69,30 @@ public class selectorController {
             EffectsHandler.PlayImageRotationTranslate(ctrl.refreshButtonImage, 0.5,0,185,true,1);
             EffectsHandler.PlayImageButtonSelected(ctrl.exitButtonImage);
 
+            api.reset();
+
         } catch (IOException e)
         {
             e.printStackTrace();
         }
+    }
+
+    public static void passAPI(WeatherAPI API)
+    {
+        api = API;
+    }
+
+    public void countryHandleMouseClick(MouseEvent mouseEvent) {
+
+        Country = this.countryList.getSelectionModel().getSelectedItem().toString();
+        cityList.getItems().clear();
+        String  country = "" + this.countryList.getSelectionModel().getSelectedItem();
+        String countryCode = api.getCountryCode(country);
+
+        api.loadListView(this.cityList, countryCode);
+    }
+
+    public void cityHandleMouseClick(MouseEvent mouseEvent) {
+        this.City = this.cityList.getSelectionModel().getSelectedItem().toString();
     }
 }

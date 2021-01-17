@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+
+(Interact with "Click Here" label\n "City, Country" label) as (Use)
+(select.fxml Window with Countries and Cities) as (Use2)
+(select Country from Countries listView) as (Use3)
+(populate and select Cities\n listView from memory) as (Use4)
+(Pass selections to first Window and fetch API data) as (Use5)
+(Exit App with animated ShutDown Button) as (Use6)
+
+
+User --> (Start)
+User --> (Use)
+(Use) -> (Use2)
+User ---> (Use3)
+(Use3) --> (Use4)
+(Use4) --> (Use5)
+(Use5) -> (Use)
+(Use2) -> (Use3)
+User -> (Use6)
+
+
+
+note left of User: I'm a user.
+
+
+note "Launch start() and main() function\nwith initWeatherAPI() from Main class" as N2
+(Start) .. N2
+N2 .. (Use)
+@enduml

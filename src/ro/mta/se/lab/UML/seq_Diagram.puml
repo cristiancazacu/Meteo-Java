@@ -1,0 +1,53 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor       actor       as Foo1
+Foo1 -> Main: **start( )**, **main( )**
+activate Foo1
+activate Main
+
+
+Main -> Controller: **FXMLLoader.load( )**
+activate Controller
+Main <-- Controller: **FXMLLoader.getController();**
+
+
+
+Main -> WeatherApi: Authentication Request, Init API
+activate WeatherApi
+WeatherApi -> WeatherApi: **reset( )**
+Main -> Controller: **passAPI(api);**
+
+
+Controller -> selectorController: **FXMLLoader.load( )**
+activate selectorController
+Controller -> selectorController: **passAPI(api)**
+deactivate Controller
+WeatherApi<-selectorController: loadListView(ListView UI)
+WeatherApi<-selectorController: loadListView(ListView UI, String countryCode)
+selectorController -> Controller: **FXMLLoader.load( )** from **back_button(MouseEvent mouseEvent)**
+activate Controller
+destroy selectorController
+
+Controller->WeatherApi: **api.fetchAPI_JSON_Data(this.Country,this.City);**
+WeatherApi->WeatherApi: JsonToMap();
+Controller->WeatherApi: **api.getMainMap();**
+WeatherApi-->Controller: Map<String,Object> mainMap
+Controller->WeatherApi: **api.getWindMap();**
+WeatherApi-->Controller: Map<String,Object> windMap = api.getWindMap();
+Controller->WeatherApi: **api.getWeatherMap();**
+WeatherApi-->Controller: Map<String,Object> weatherMap;
+
+
+Controller --> Foo1: **exit( )**;
+deactivate Foo1
+deactivate Main
+deactivate Controller
+deactivate WeatherApi
+destroy Main
+destroy Controller
+destroy WeatherApi
+
+
+@enduml
