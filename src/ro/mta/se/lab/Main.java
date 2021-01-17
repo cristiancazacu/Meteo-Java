@@ -1,25 +1,17 @@
 package ro.mta.se.lab;
 
-import animatefx.animation.*;
-import javafx.animation.RotateTransition;
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.scene.image.ImageView;
-import javafx.util.Duration;
-import ro.mta.se.lab.image.EffectsHandler;
+import ro.mta.se.lab.Controllers.Controller;
+import ro.mta.se.lab.Controllers.selectorController;
+import ro.mta.se.lab.Utility.EffectsHandler;
 
-import java.awt.*;
+
 import java.io.IOException;
 
 public class Main extends Application {
@@ -28,8 +20,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml")); //save instance of Controller
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Views/mainWindow.fxml")); //save instance of Controller
         Parent root;
+
+        WeatherAPI api = new WeatherAPI();
+        api.initWeatherAPI();
+
+        Controller.passAPI(api);
+        selectorController.passAPI(api);
 
 
         try {
@@ -42,7 +40,7 @@ public class Main extends Application {
         Controller ctrl = (Controller) loader.getController();
 
         primaryStage.setTitle("Meteo");     // Titlu App
-        primaryStage.setScene(new Scene(root, 400, 380));   // inaltime: 400, latime: 380
+        primaryStage.setScene(new Scene(root, 399, 379));   // latime: 399, inaltime: 379
         primaryStage.initStyle(StageStyle.TRANSPARENT);         // dispar colturi albe
         primaryStage.getScene().setFill(Color.TRANSPARENT);     // dispar colturi albe
         primaryStage.show();
@@ -53,10 +51,6 @@ public class Main extends Application {
         EffectsHandler.PlayImageRotationTranslate(ctrl.refreshButtonImage, 0.5,0,185,true,1);
         EffectsHandler.PlayImageButtonSelected(ctrl.exitButtonImage);
 
-
-        //refreshButtonImage = (ImageView) root.lookup("#refreshButtonImage");
-        //Node uiobject = refreshButtonImage;
-        //Node element = root;
 
 
     }
